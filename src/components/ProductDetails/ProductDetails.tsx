@@ -48,6 +48,13 @@ function formatPrice(num: number) {
   return `$${num.toLocaleString('en-US')}`;
 }
 
+const images = [
+  '/product-images/1.jpeg',
+  '/product-images/2.jpeg',
+  '/product-images/3.jpeg',
+  '/product-images/4.jpeg',
+];
+
 function ProductDetails() {
   // fetch product with useQuery]
 
@@ -73,11 +80,11 @@ function ProductDetails() {
 
   return (
     <div className="pb-28">
-      <ImageCarousel images={[]} />
+      <ImageCarousel images={images} />
       <div className="pt-4 space-y-3">
         <SectionWrapper>
           <h2 className="line-clamp-2">{product.productName}</h2>
-          <div className="pt-1 flex items-center gap-x-1">
+          <div className="pt-1 flex items-center gap-x-2">
             <div>
               <span>
                 {formatPrice(product.sellingPriceMin)} -
