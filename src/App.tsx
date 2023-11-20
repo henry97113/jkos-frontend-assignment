@@ -1,5 +1,11 @@
+import ProductDetails from './components/ProductDetails';
+
 function App() {
-  return <div className="bg-blue-500 text-red-200">App</div>;
+  return (
+    <div>
+      <ProductDetails />
+    </div>
+  );
 }
 
 export default App;
