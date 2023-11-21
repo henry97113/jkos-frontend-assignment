@@ -26,7 +26,7 @@ function ImageCarousel({ images }: ImageCarouselProps) {
   };
 
   return (
-    <div className="w-full aspect-square bg-[#272933] relative">
+    <div className="w-full aspect-square relative">
       <Slider {...sliderSettings}>
         {images.map((src, i) => (
           <img key={i} src={src} />

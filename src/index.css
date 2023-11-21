@@ -2,7 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  background: #000;
-  color: #fff;
+@layer utilities {
+  .page {
+    background: theme('colors.black');
+    color: theme('colors.white');
+    min-height: theme('height.full');
+    margin-inline: theme('margin.auto');
+
+    @media (min-width: theme('screens.md')) {
+      max-width: theme('maxWidth.2xl');
+      border-inline-width: theme('borderWidth.DEFAULT');
+      border-inline-color: theme('borderColor.gray.600');
+      border-inline-style: solid;
+    }
+  }
+
+  .sr-only {
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
 }

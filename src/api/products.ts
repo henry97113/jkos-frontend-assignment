@@ -7,10 +7,10 @@ export type Product = {
   originalPriceMax: number;
   sellingPriceMin: number;
   sellingPriceMax: number;
-  tags: string[];
+  tags?: string[];
   notes: string[];
   productImages: string[];
-  sideNote: string;
+  sideNote?: string;
   description: string;
   category: string;
 };
