@@ -13,6 +13,35 @@ export const handlers = [
       sellingPriceMin: 2999,
       sellingPriceMax: 3999,
       tags: ['街口結帳享九折優惠', '訂單滿399免運費'],
+      colorList: [
+        { variant: '酷炫黑', inStock: true },
+        { variant: '紫旋風', inStock: true },
+        { variant: '暴風紅', inStock: false },
+        { variant: '耀眼黃', inStock: true },
+        { variant: 'Very longgggggggggggg option', inStock: true },
+      ],
+      sizeList: [
+        {
+          variant: 'S',
+          inStock: true,
+        },
+        {
+          variant: 'M',
+          inStock: false,
+        },
+        {
+          variant: 'L',
+          inStock: true,
+        },
+        {
+          variant: 'XL',
+          inStock: true,
+        },
+        {
+          variant: 'XXL',
+          inStock: true,
+        },
+      ],
       productImages: [
         '/product-images/1.jpeg',
         '/product-images/2.jpeg',

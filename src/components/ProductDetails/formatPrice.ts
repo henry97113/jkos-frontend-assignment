@@ -1,14 +1,11 @@
-function formatNumber(num: number) {
-  return `$${num.toLocaleString('en-US')}`;
-}
-function formatPrice(min: number, max: number) {
-  let res = formatNumber(min);
+import { formatCurrency } from '@/helpers/currency';
+
+export function formatPrice(min: number, max: number) {
+  let res = formatCurrency(min);
 
   if (min < max) {
-    res += ` - ${formatNumber(max)}`;
+    res += ` - ${formatCurrency(max)}`;
   }
 
   return res;
 }
-
-export { formatPrice };

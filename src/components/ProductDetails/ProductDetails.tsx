@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { clsx } from 'clsx';
-import { useQuery } from '@tanstack/react-query';
+import { Loader2 } from 'lucide-react';
 
-import { getProductById } from '@/api/products';
+import { cn } from '@/helpers/classNames';
+import { useProduct } from '@/hooks/useProduct';
 
+import Divider from '../ui/Divider';
 import ImageCarousel from '../ImageCarousel';
 import ProductActions from '../ProductActions';
+import VisuallyHidden from '../ui/VisuallyHidden';
 import { formatPrice } from './formatPrice';
-import { Loader2 } from 'lucide-react';
-import VisuallyHidden from '../VisuallyHidden';
 
 type ProductDescriptionItemProps = {
   title: string;
@@ -32,12 +32,7 @@ type ProductDetailsProps = {
 };
 
 function ProductDetails({ productId }: ProductDetailsProps) {
-  const { data, isLoading, isPaused, isError } = useQuery({
-    queryKey: ['product', productId],
-    queryFn: () => {
-      return getProductById(productId);
-    },
-  });
+  const { data, isLoading, isPaused, isError } = useProduct(productId);
 
   if (isLoading) {
     return (
@@ -126,7 +121,7 @@ function SectionWrapper({
 }) {
   const baseClassNames = 'rounded-md bg-[#272933] mx-3 p-3';
 
-  return <div className={clsx(baseClassNames, className)}>{children}</div>;
+  return <div className={cn(baseClassNames, className)}>{children}</div>;
 }
 
 function Badge({ children }: { children: React.ReactNode }) {
@@ -134,12 +129,6 @@ function Badge({ children }: { children: React.ReactNode }) {
     <span className="rounded-md text-xs px-2 py-0.5  text-[#f0e9eb] bg-[#6c2235]">
       {children}
     </span>
-  );
-}
-
-function Divider() {
-  return (
-    <hr className="border-[#1d1f27] border-0 border-solid border-b w-full my-2" />
   );
 }
 
