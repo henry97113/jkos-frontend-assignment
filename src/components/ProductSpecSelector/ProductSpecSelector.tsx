@@ -28,21 +28,13 @@ function ProductSpecSelector({ ctaText, onSubmit }: ProductSpecSelectorProps) {
   const { productName, productImages, sellingPriceMax, sizeList, colorList } =
     product;
 
-  const handlePickSize: React.MouseEventHandler = function handlePickSize(
-    event
-  ) {
-    if (!(event.target instanceof HTMLButtonElement)) return;
-    const size = (event.target as HTMLButtonElement).dataset.variant as string;
+  function handlePickSize(size: string) {
     setSelectedSize(size);
-  };
+  }
 
-  const handlePickColor: React.MouseEventHandler = function handlePickColor(
-    event
-  ) {
-    if (!(event.target instanceof HTMLButtonElement)) return;
-    const color = (event.target as HTMLButtonElement).dataset.variant as string;
+  function handlePickColor(color: string) {
     setSelectedColor(color);
-  };
+  }
 
   return (
     <div>
@@ -62,11 +54,11 @@ function ProductSpecSelector({ ctaText, onSubmit }: ProductSpecSelectorProps) {
           <h3>尺寸</h3>
           <span className="text-[#97989f] text-sm">補充說明</span>
         </div>
-        <div className="flex flex-wrap gap-2" onClick={handlePickSize}>
+        <div className="flex flex-wrap gap-2">
           {sizeList.map((size) => (
             <SelectButton
               key={size.variant}
-              data-variant={size.variant}
+              onClick={() => handlePickSize(size.variant)}
               isActive={size.variant === selectedSize}
               disabled={!size.inStock}
             >
@@ -80,11 +72,11 @@ function ProductSpecSelector({ ctaText, onSubmit }: ProductSpecSelectorProps) {
           <h3>顏色</h3>
           <span className="text-[#97989f] text-sm">補充說明</span>
         </div>
-        <div className="flex flex-wrap gap-2" onClick={handlePickColor}>
+        <div className="flex flex-wrap gap-2">
           {colorList.map((color) => (
             <SelectButton
               key={color.variant}
-              data-variant={color.variant}
+              onClick={() => handlePickColor(color.variant)}
               isActive={color.variant === selectedColor}
               disabled={!color.inStock}
             >
